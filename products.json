@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "BOOSTER POKÉMON ÉPÉE ET BOUCLIER BLUE SKY STREAM",
+        "description": "5 cartes par paquet",
+        "price": 11,
+        "discount": 10,
+        "images": [
+            "url1",
+            "url2",
+            "url3"
+        ],
+        "category": "booster",
+        "sub-category": "epee et bouclier",
+        "brand": "Pokemon",
+        "extension": "Blue sky stream S7r"
+    },
+    {
+        "id": 2,
+        "title": "BOOSTER POKÉMON 25ÈME ANNIVERSAIRE",
+        "description": "5 cartes par paquet",
+        "price": 8.6,
+        "discount": 0,
+        "images": [
+            "url1",
+            "url2",
+            "url3"
+        ],
+        "category": "booster",
+        "sub-category": "25eme anniversaire",
+        "brand": "Pokemon",
+        "extension": "25eme anniversaire S8a"
+    }
+]
