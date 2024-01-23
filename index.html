@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>About</title>
+        <title>MiSto</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -12,7 +12,7 @@
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="/assets/js/script.js"></script>
     </head>
     <body class="home">
         <header>
@@ -33,12 +33,9 @@
                 <div class="logo">MiSto</div>
                 <div class="links">
                     <a href="/">About Us</a>
-                    <a href="/">Women</a>
-                    <a href="/">Men</a>
-                    <a href="/">Beauty</a>
-                    <a href="/">Accessories</a>
-                    <a href="/">Blog</a>
-                    <a href="/">Contact</a>
+                    <a href="#pokemon-container">Pokemon</a>
+                    <a href="#onepiece-container">One Piece</a>
+                    <a href="#yugioh-container">Yu-Gi-Oh!</a>
                 </div>
                 <div class="menu">
                     <span>R</span>
@@ -48,5 +45,41 @@
                 </div>
             </nav>
         </header>
+
+        <main>
+            <div class="presentation">
+                <div class="nav-img">
+                    <img src="./assets/img/main.png" alt="image principale" />
+                    <a href="">Cartes à collectionner</a>
+                </div>
+                <div class="nav-img">
+                    <img src="./assets/img/OnePiece.png" alt="image OnePiece" />
+                    <a href="#onepiece-container">OnePiece</a>
+                </div>
+                <div class="nav-img">
+                    <img src="./assets/img/Yu-Gi-Oh!.png" alt="image Yu-Gi-Oh" />
+                    <a href="#yugioh-container">Yu-Gi-Oh</a>
+                </div>
+                <div class="nav-img">
+                    <img src="./assets/img/Pokemon.png" alt="image Pokemon" />
+                    <a href="#pokemon-container">Pokemon</a>
+                </div>
+            </div>
+
+            <div id="pokemon-container" class="brand-container">
+                <h2>Pokemon</h2>
+                <div id="pokemon-products" class="products-container"></div>
+            </div>
+
+            <div id="onepiece-container" class="brand-container">
+                <h2>One Piece</h2>
+                <div id="onepiece-products" class="products-container"></div>
+            </div>
+
+            <div id="yugioh-container" class="brand-container">
+                <h2>Yu-Gi-Oh!</h2>
+                <div id="yugioh-products" class="products-container"></div>
+            </div>
+        </main>
     </body>
 </html>

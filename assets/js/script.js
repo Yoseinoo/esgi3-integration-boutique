@@ -1,43 +1,42 @@
 $(e => {
-    //Number counter
-    let initNumbers = true;
-    $(window).scroll(function() {
-        var s = $(window).scrollTop();
-    
-        if (s > 1400 && initNumbers) {
-            console.log('start counters')
-            let stat1 = $('#stat1');
-            $({someValue: 0}).animate({someValue: 120}, {
-                duration: 3000,
-                easing:'swing', // can be anything
-                step: function() { // called on every step
-                    // Update the element's text with rounded-up value:
-                    stat1.text(Math.round(this.someValue) + 'm');
-                }
-            });
+    fetch('../../products.json')
+    .then((res) => {
+        return res.json();
+    })
+    .then((data) => {
+        const products = data;
+        products.forEach(product => {
+            let container = null;
+            if (product.brand == 'Pokemon') {
+                container = $('#pokemon-products');
+            } else if (product.brand == "Onepiece") {
+                container = $('#onepiece-products');
+            } else if (product.brand == "Yugioh") {
+                container = $('#yugioh-products');
+            }
 
-            let stat2 = $('#stat2');
-            $({someValue: 0}).animate({someValue: 10000}, {
-                duration: 3000,
-                easing:'swing', // can be anything
-                step: function() { // called on every step
-                    // Update the element's text with rounded-up value:
-                    stat2.text(Math.round(this.someValue));
-                }
-            });
+            if (container != null) {
+                const productDiv = $('<div>');
+                productDiv.addClass('product-card');
 
-            let stat3 = $('#stat3');
-            $({someValue: 0}).animate({someValue: 240}, {
-                duration: 3000,
-                easing:'swing', // can be anything
-                step: function() { // called on every step
-                    // Update the element's text with rounded-up value:
-                    stat3.text(Math.round(this.someValue));
-                }
-            });
+                const img = $('<img>');
+                img.attr('src', product.images[0]);
+                productDiv.append(img);
 
-            initNumbers = false;
-        }
+                const title = $('<h4>');
+                title.html(product.title);
+                productDiv.append(title);
+
+                const price = $('<p>');
+                price.html(product.price + "€");
+                productDiv.append(price);
+
+                container.append(productDiv);
+            }
+        });     
+    })
+    .catch((err) => {
+        console.error(err);
     });
 
     //Carousel
@@ -46,19 +45,5 @@ $(e => {
         slidesToShow: 3,
         slidesToScroll: 1, 
         arrows: false,
-    });
-
-    //Gestion du menu mobile/desktop
-    $('.burger-icon').on('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        $('#nav-small-device').css('display', 'flex');
-    });
-
-    $(document).on('click', function (e) {
-        if ($(e.target).closest("#nav-small-device").length === 0) {
-            $("#nav-small-device").hide();
-        }
     });
 });

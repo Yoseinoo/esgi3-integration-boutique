@@ -98,7 +98,11 @@ footer .links .column a.with-button::after {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  padding: 5px;
   padding-left: 100px;
+}
+.home header .top-header .infos p {
+  margin: 0;
 }
 .home header .top-header .social-media {
   display: flex;
@@ -111,7 +115,71 @@ footer .links .column a.with-button::after {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 100px;
+  padding: 10px 100px;
+}
+.home header nav .logo {
+  font-size: 35px;
+  font-weight: bold;
+}
+.home header nav .links {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.home header nav .links a {
+  color: #000000;
+  text-decoration: none;
+}
+.home header nav .links a:visited {
+  color: #000000;
+}
+.home main {
+  margin: 0 100px;
+}
+.home main .presentation {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.home main .presentation .nav-img {
+  position: relative;
+}
+.home main .presentation .nav-img img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.home main .presentation .nav-img a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.home main .presentation .nav-img a:visited {
+  color: #000000;
+}
+.home main .presentation .nav-img a:hover {
+  border: solid 2px #000000;
+}
+.home main .brand-container {
+  margin-top: 80px;
+}
+.home main .brand-container .products-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.home main .brand-container .products-container .product-card {
+  max-width: 300px;
+}
+.home main .brand-container .products-container .product-card img {
+  max-width: 100%;
+  height: auto;
 }
 
 .about {
