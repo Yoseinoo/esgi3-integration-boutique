@@ -1,0 +1,8 @@
+Sass pour le css
+js
+slick pour le carousel
+1 seul point de rupture (l'essentiel c'est qu'il s'affiche bien sur mobile)
+
+sass --watch ./assets/scss/index.scss ./style.css
+
+Petite présentation orale à la fin

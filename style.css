@@ -1,87 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
-footer {
-  max-width: 1200px;
-  margin: auto;
-  margin-top: 80px;
-  padding: 100px 0;
-  display: flex;
-  flex-direction: row;
-  gap: 180px;
-}
-@media screen and (max-width: 500px) {
-  footer {
-    margin-top: 0;
-    gap: 30px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 80vw;
-    margin: auto;
-  }
-}
-footer .text {
-  max-width: 300px;
-}
-footer .text p {
-  color: #777777;
-  font-weight: 400;
-  margin-top: 40px;
-}
-footer .text p.add-margin {
-  margin-top: 65px;
-}
-@media screen and (max-width: 500px) {
-  footer .text p.add-margin {
-    margin-top: 30px;
-  }
-}
-footer .links {
-  display: flex;
-  flex-direction: row;
-  gap: 150px;
-}
-@media screen and (max-width: 500px) {
-  footer .links {
-    flex-direction: column;
-    gap: 50px;
-  }
-}
-footer .links .column {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-@media screen and (max-width: 500px) {
-  footer .links .column {
-    gap: 15px;
-  }
-}
-@media screen and (max-width: 500px) {
-  footer .links .column h3 {
-    margin: 0;
-  }
-}
-footer .links .column a {
-  font-size: 20px;
-  font-weight: 400;
-  color: #777777;
-  position: relative;
-}
-footer .links .column a.with-button::after {
-  content: "Hiring!";
-  position: absolute;
-  display: inline-block;
-  top: 0;
-  right: -70px;
-  border-radius: 14px;
-  background-color: #4FE9A4;
-  font-size: 13px;
-  font-weight: 700;
-  color: #0A2640;
-  padding: 5px 14px;
-}
-
 .home {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -93,13 +11,12 @@ footer .links .column a.with-button::after {
   align-items: center;
   background-color: #000000;
   color: #FFFFFF;
+  padding: 5px 100px;
 }
 .home header .top-header .infos {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 5px;
-  padding-left: 100px;
 }
 .home header .top-header .infos p {
   margin: 0;
@@ -107,15 +24,27 @@ footer .links .column a.with-button::after {
 .home header .top-header .social-media {
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  padding-right: 100px;
+  gap: 15px;
+}
+.home header .top-header .social-media span {
+  display: flex;
+  align-items: center;
+}
+.home header .top-header .social-media span:hover {
+  cursor: pointer;
+}
+.home header .top-header .social-media span img {
+  max-width: 20px;
+  height: auto;
 }
 .home header nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: solid 1px rgba(119, 119, 119, 0.3);
   padding: 10px 100px;
+  position: relative;
 }
 .home header nav .logo {
   font-size: 35px;
@@ -133,8 +62,21 @@ footer .links .column a.with-button::after {
 .home header nav .links a:visited {
   color: #000000;
 }
+.home #cart-div {
+  display: none;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  z-index: 10;
+  background-color: #FFFFFF;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px;
+}
+.home #cart-div h4 {
+  margin: 0;
+}
 .home main {
-  margin: 0 100px;
+  margin: 30px 100px;
 }
 .home main .presentation {
   display: flex;
@@ -155,7 +97,7 @@ footer .links .column a.with-button::after {
   transform: translate(-50%, -50%);
   padding: 10px;
   color: #000000;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
@@ -166,20 +108,131 @@ footer .links .column a.with-button::after {
 .home main .presentation .nav-img a:hover {
   border: solid 2px #000000;
 }
+.home main .filters {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+.home main #pokemon-container {
+  margin-top: 0;
+}
 .home main .brand-container {
   margin-top: 80px;
 }
 .home main .brand-container .products-container {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 .home main .brand-container .products-container .product-card {
+  min-width: 300px;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
 }
-.home main .brand-container .products-container .product-card img {
+.home main .brand-container .products-container .product-card figure {
+  margin: 0;
+}
+.home main .brand-container .products-container .product-card figure .img,
+.home main .brand-container .products-container .product-card figure .img2 {
   max-width: 100%;
   height: auto;
+}
+.home main .brand-container .products-container .product-card figure .img2 {
+  display: none;
+}
+.home main .brand-container .products-container .product-card figure:hover .img {
+  display: none;
+}
+.home main .brand-container .products-container .product-card figure:hover .img2 {
+  display: block;
+}
+.home main .brand-container .products-container .product-card .title {
+  color: #777777;
+  font-weight: normal;
+  text-transform: lowercase;
+  margin: 0;
+}
+.home main .brand-container .products-container .product-card .price {
+  font-weight: bold;
+  margin: 0;
+}
+.home main .brand-container .products-container .product-card .discount {
+  margin-left: 10px;
+  font-weight: normal;
+  color: #777777;
+  text-decoration: line-through;
+}
+.home footer .registration {
+  padding: 0 100px;
+  color: #FFFFFF;
+  background-color: #000000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.home footer .registration .email-input {
+  width: 300px;
+  padding: 5px;
+  background-color: #777777;
+  color: #FFFFFF;
+}
+.home footer .registration .email-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.home footer .registration .registration-button {
+  padding: 5px;
+  background-color: #000000;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+}
+.home footer .registration .registration-button:hover {
+  cursor: pointer;
+}
+.home footer .registration .social-media {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.home footer .registration .social-media span {
+  display: flex;
+  align-items: center;
+}
+.home footer .registration .social-media span:hover {
+  cursor: pointer;
+}
+.home footer .registration .social-media span img {
+  max-width: 20px;
+  height: auto;
+}
+.home footer nav {
+  padding: 0 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.home footer nav .title {
+  text-transform: uppercase;
+}
+.home footer nav .links {
+  list-style-type: none;
+  padding: 0;
+}
+.home footer .copyrights {
+  padding: 0 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #777777;
 }
 
 .about {

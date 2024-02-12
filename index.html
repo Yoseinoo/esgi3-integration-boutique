@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MiSto</title>
+        <title>Cartes</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -23,16 +23,16 @@
                     <p>Toute la semaine 24/7</p>
                 </div>
                 <div class="social-media">
-                    <span>f</span>
-                    <span>t</span>
-                    <span>i</span>
-                    <span>p</span>
+                    <span><img src="assets/img/facebook-svgrepo-com.svg"></span>
+                    <span><img src="assets/img/twitter-svgrepo-com.svg"></span>
+                    <span><img src="assets/img/instagram-svgrepo-com.svg"></span>
+                    <span><img src="assets/img/pinterest-svgrepo-com.svg"></span>
                 </div>
             </div>
             <nav>
-                <div class="logo">MiSto</div>
+                <div class="logo">Cartes</div>
                 <div class="links">
-                    <a href="/">About Us</a>
+                    <a href="/">A propos</a>
                     <a href="#pokemon-container">Pokemon</a>
                     <a href="#onepiece-container">One Piece</a>
                     <a href="#yugioh-container">Yu-Gi-Oh!</a>
@@ -41,10 +41,12 @@
                     <span>R</span>
                     <span>W</span>
                     <span>U</span>
-                    <span>C</span>
+                    <span><button id="cart-button">Cart</button></span>
                 </div>
             </nav>
         </header>
+
+        <div id="cart-div"></div>
 
         <main>
             <div class="presentation">
@@ -66,6 +68,14 @@
                 </div>
             </div>
 
+            <div class="filters">
+                <p>Filtres : </p>
+                <select id="category-select"></select>
+                <select id="subcategory-select"></select>
+                <select id="extension-select"></select>
+                <button id="filter-button">FILTRER</button>
+            </div>
+
             <div id="pokemon-container" class="brand-container">
                 <h2>Pokemon</h2>
                 <div id="pokemon-products" class="products-container"></div>
@@ -81,5 +91,66 @@
                 <div id="yugioh-products" class="products-container"></div>
             </div>
         </main>
+
+        <footer>
+            <div class="registration">
+                <p>ON RESTE EN CONTACT ?</p>
+                <div>
+                    <input class="email-input" type="text" placeholder="Entrez votre email" />
+                    <button class="registration-button">NOUS REJOINDRE</button>
+                </div>
+                <div class="social-media">
+                    <span><img src="assets/img/facebook-svgrepo-com.svg"></span>
+                    <span><img src="assets/img/twitter-svgrepo-com.svg"></span>
+                    <span><img src="assets/img/instagram-svgrepo-com.svg"></span>
+                    <span><img src="assets/img/pinterest-svgrepo-com.svg"></span>
+                </div>
+            </div>
+            <nav>
+                <div class="part">
+                    <h4 class="title">Catégories</h4>
+                    <ul class="links">
+                        <li>Tous</li>
+                        <li>Pokemon</li>
+                        <li>One Piece</li>
+                        <li>Yu-Gi-Oh!</li>
+                    </ul>
+                </div>
+                <div class="part">
+                    <h4 class="title">Information</h4>
+                    <ul class="links">
+                        <li>A propos</li>
+                        <li>Nous contacter</li>
+                        <li>Blog</li>
+                        <li>FAQs</li>
+                    </ul>
+                </div>
+                <div class="part">
+                    <h4 class="title">Liens utiles</h4>
+                    <ul class="links">
+                        <li>Termes & Conditions</li>
+                        <li>Retours & Échanges</li>
+                        <li>Envois & Livraisons</li>
+                        <li>Politique de vie privée</li>
+                    </ul>
+                </div>
+                <div class="part">
+                    <h4 class="title">Nous contacter</h4>
+                    <ul class="links">
+                        <li>France, Aix-en-Provence</li>
+                        <li>+336 06 06 60 60</li>
+                        <li>Toute la semaine 24/7</li>
+                        <li>test@test.fr</li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="copyrights">
+                <p>Copyright © 2024 tous droits réservés</p>
+                <div class="paymeans">
+
+                </div>
+                <p>Conception par Florian et Lucie</p>
+            </div>
+        </footer>
     </body>
 </html>
