@@ -1,5 +1,5 @@
 $(e => {
-    const priceFormatter = new Intl.NumberFormat('fr-FR', {style: 'currency', currency:'EUR'});
+    const priceFormatter = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
 
     $('#cart-button').on('click', openCart);
     $('#filter-button').on('click', fillPage);
@@ -21,9 +21,32 @@ $(e => {
     $('.carousel').slick({
         infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 1, 
+        slidesToScroll: 1,
         arrows: false,
     });
+
+
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: true,
+        focusOnSelect: true
+    });
+
+    $('a[data-slide]').click(function (e) {
+        e.preventDefault();
+        var slideno = $(this).data('slide');
+        $('.slider-nav').slick('slickGoTo', slideno - 1);
+    });
+
 
     /**
      * Fill the page by creating the products and the filters
@@ -46,144 +69,144 @@ $(e => {
 
         //Get products from json
         fetch('../../products.json')
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            const products = data;
-            products.forEach(product => {
-                //Check if product passes the filter, if not go to the next product without doing anything
-                if (selectedCategory != null && product.category != selectedCategory) {
-                    return;
-                } 
-                
-                if (selectedSubcategory != null && product.subcategory != selectedSubcategory) {
-                    return;
-                }
-                
-                if (selectedExtension != null && product.extension != selectedExtension) {
-                    return;
-                }
-
-                //Add extension, category or subcategory to arrays
-                if (!categories.includes(product.category)) {
-                    categories.push(product.category);
-                }
-
-                if (!subcategories.includes(product.subcategory)) {
-                    subcategories.push(product.subcategory);
-                }
-
-                if (!extensions.includes(product.extension)) {
-                    extensions.push(product.extension);
-                }
-
-                let container = null;
-                //Find in which container product should go base on his brand
-                if (product.brand == 'Pokemon') {
-                    container = $('#pokemon-products');
-                } else if (product.brand == "Onepiece") {
-                    container = $('#onepiece-products');
-                } else if (product.brand == "Yugioh") {
-                    container = $('#yugioh-products');
-                }
-
-                //If a container is found, create the product card and add it to the container
-                if (container != null) {
-                    const productDiv = $('<div>');
-                    productDiv.addClass('product-card');
-
-                    const figure = $('<figure>');
-
-                    const img = $('<img>');
-                    img.addClass("img");
-                    img.attr('src', product.images[0]);
-                    figure.append(img);
-
-                    const img2 = $('<img>');
-                    img2.addClass("img2");
-                    img2.attr('src', product.images[1]);
-                    figure.append(img2);
-                    
-                    productDiv.append(figure);
-
-                    const title = $('<h4>');
-                    title.addClass('title');
-                    title.html(product.title);
-                    productDiv.append(title);
-
-                    const priceP = $('<p>');
-                    priceP.addClass("price");
-                    if (product.discount > 0) {
-                        let discountPrice = product.price - product.discount;
-                        priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
-                    } else {
-                    priceP.html(product.price + "€"); 
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                const products = data;
+                products.forEach(product => {
+                    //Check if product passes the filter, if not go to the next product without doing anything
+                    if (selectedCategory != null && product.category != selectedCategory) {
+                        return;
                     }
-                    productDiv.append(priceP);
 
-                    const buttonSee = $('<button>');
-                    buttonSee.html("Voir le produit");
-                    productDiv.append(buttonSee);
+                    if (selectedSubcategory != null && product.subcategory != selectedSubcategory) {
+                        return;
+                    }
 
-                    const buttonAddToCart = $('<button>');
-                    buttonAddToCart.html("Ajouter au panier");
-                    buttonAddToCart.on('click', function(event) {
-                        addToCart(product.id);
-                    });
-                    productDiv.append(buttonAddToCart);
+                    if (selectedExtension != null && product.extension != selectedExtension) {
+                        return;
+                    }
 
-                    container.append(productDiv);
-                }
-            });
-            
-            //Add options to filters selects
-            if ($('#category-select').find("option").length === 0) {
-                //Add a null option
-                $('#category-select').append($('<option>', {
-                    value: '',
-                    text: "Toutes les catégories"
-                }));
-                //Add options found
-                categories.forEach(element => {
+                    //Add extension, category or subcategory to arrays
+                    if (!categories.includes(product.category)) {
+                        categories.push(product.category);
+                    }
+
+                    if (!subcategories.includes(product.subcategory)) {
+                        subcategories.push(product.subcategory);
+                    }
+
+                    if (!extensions.includes(product.extension)) {
+                        extensions.push(product.extension);
+                    }
+
+                    let container = null;
+                    //Find in which container product should go base on his brand
+                    if (product.brand == 'Pokemon') {
+                        container = $('#pokemon-products');
+                    } else if (product.brand == "Onepiece") {
+                        container = $('#onepiece-products');
+                    } else if (product.brand == "Yugioh") {
+                        container = $('#yugioh-products');
+                    }
+
+                    //If a container is found, create the product card and add it to the container
+                    if (container != null) {
+                        const productDiv = $('<div>');
+                        productDiv.addClass('product-card');
+
+                        const figure = $('<figure>');
+
+                        const img = $('<img>');
+                        img.addClass("img");
+                        img.attr('src', product.images[0]);
+                        figure.append(img);
+
+                        const img2 = $('<img>');
+                        img2.addClass("img2");
+                        img2.attr('src', product.images[1]);
+                        figure.append(img2);
+
+                        productDiv.append(figure);
+
+                        const title = $('<h4>');
+                        title.addClass('title');
+                        title.html(product.title);
+                        productDiv.append(title);
+
+                        const priceP = $('<p>');
+                        priceP.addClass("price");
+                        if (product.discount > 0) {
+                            let discountPrice = product.price - product.discount;
+                            priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
+                        } else {
+                            priceP.html(product.price + "€");
+                        }
+                        productDiv.append(priceP);
+
+                        const buttonSee = $('<button onclick="location.href=' + "'/assets/pages/product.html'" + '" type="button">');
+                        buttonSee.html("Voir le produit");
+                        productDiv.append(buttonSee);
+
+                        const buttonAddToCart = $('<button>');
+                        buttonAddToCart.html("Ajouter au panier");
+                        buttonAddToCart.on('click', function (event) {
+                            addToCart(product.id);
+                        });
+                        productDiv.append(buttonAddToCart);
+
+                        container.append(productDiv);
+                    }
+                });
+
+                //Add options to filters selects
+                if ($('#category-select').find("option").length === 0) {
+                    //Add a null option
                     $('#category-select').append($('<option>', {
-                        value: element,
-                        text: element
+                        value: '',
+                        text: "Toutes les catégories"
                     }));
-                });
-            }
+                    //Add options found
+                    categories.forEach(element => {
+                        $('#category-select').append($('<option>', {
+                            value: element,
+                            text: element
+                        }));
+                    });
+                }
 
-            if ($('#subcategory-select').find("option").length === 0) {
-                //Add a null option
-                $('#subcategory-select').append($('<option>', {
-                    value: '',
-                    text: "Toutes les sous-catégories"
-                }));
-                subcategories.forEach(element => {
+                if ($('#subcategory-select').find("option").length === 0) {
+                    //Add a null option
                     $('#subcategory-select').append($('<option>', {
-                        value: element,
-                        text: element
+                        value: '',
+                        text: "Toutes les sous-catégories"
                     }));
-                });
-            }
+                    subcategories.forEach(element => {
+                        $('#subcategory-select').append($('<option>', {
+                            value: element,
+                            text: element
+                        }));
+                    });
+                }
 
-            if ($('#extension-select').find("option").length === 0) {
-                //Add a null option
-                $('#extension-select').append($('<option>', {
-                    value: '',
-                    text: "Toutes les extensions"
-                }));
-                extensions.forEach(element => {
+                if ($('#extension-select').find("option").length === 0) {
+                    //Add a null option
                     $('#extension-select').append($('<option>', {
-                        value: element,
-                        text: element
+                        value: '',
+                        text: "Toutes les extensions"
                     }));
-                });
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-        });
+                    extensions.forEach(element => {
+                        $('#extension-select').append($('<option>', {
+                            value: element,
+                            text: element
+                        }));
+                    });
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
     function getIdsFromLocalStorage() {
@@ -246,54 +269,99 @@ $(e => {
 
         //Get the products from json
         fetch('../../products.json')
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            const products = data;
-            products.forEach(product => {
-                //If the product is the one added, add it to the new div
-                if (ids.includes(product.id)) {
-                    //Create the new div
-                    const div = $('<div>');
-                    div.addClass("product");
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                const products = data;
+                products.forEach(product => {
+                    //If the product is the one added, add it to the new div
+                    if (ids.includes(product.id)) {
+                        //Create the new div
+                        const div = $('<div>');
+                        div.addClass("product");
 
-                    const img = $('<img>');
-                    img.attr('src', product.images[0]);
-                    div.append(img);
+                        const img = $('<img>');
+                        img.attr('src', product.images[0]);
+                        div.append(img);
 
-                    const title = $('<h4>');
-                    title.addClass('title');
-                    title.html(product.title);
-                    div.append(title);
+                        const title = $('<h4>');
+                        title.addClass('title');
+                        title.html(product.title);
+                        div.append(title);
 
-                    const priceP = $('<p>');
-                    priceP.addClass("price");
-                    if (product.discount > 0) {
-                        let discountPrice = product.price - product.discount;
-                        priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
-                    } else {
-                    priceP.html(product.price + "€"); 
+                        const priceP = $('<p>');
+                        priceP.addClass("price");
+                        if (product.discount > 0) {
+                            let discountPrice = product.price - product.discount;
+                            priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
+                        } else {
+                            priceP.html(product.price + "€");
+                        }
+                        div.append(priceP);
+
+                        const buttonRemove = $('<button>');
+                        buttonRemove.html("Supprimer");
+                        buttonRemove.addClass("delete-product");
+                        buttonRemove.on('click', function (event) {
+                            removeFromCart(product.id);
+                        });
+                        div.append(buttonRemove);
+
+                        //Add the created div to the cart
+                        $('#cart-div').append(div);
                     }
-                    div.append(priceP);
-
-                    const buttonRemove = $('<button>');
-                    buttonRemove.html("Supprimer");
-                    buttonRemove.addClass("delete-product");
-                    buttonRemove.on('click', function(event) {
-                        removeFromCart(product.id);
-                    });
-                    div.append(buttonRemove);
-
-                    //Add the created div to the cart
-                    $('#cart-div').append(div);
-                }
+                });
+            })
+            .catch((err) => {
+                console.error(err);
             });
-        })
-        .catch((err) => {
-            console.error(err);
-        });
 
         $('#cart-div').show();
     }
 });
+
+function dialogTxtCart() {
+    var dialogTxt = document.querySelector('.dialog');
+    const allElements = document.querySelectorAll('#subElements');
+    let selected = false;
+    allElements.forEach(function (element) {
+        if (element.style.border == '2px solid black') {
+            selected = true;
+            element.style.border = 'none';
+        }
+    })
+    if (selected) {
+        dialogTxt.innerText = "Ce produit a bien été ajouté à votre panier";
+    } else {
+        dialogTxt.innerText = "Veuillez choisir les options de votre produit";
+    }
+
+};
+// Le bouton "Afficher la fenêtre" ouvre le dialogue
+function showProductModal() {
+    var dialog = document.querySelector("dialog");
+    dialogTxtCart();
+    dialog.showModal();
+};
+
+// Le bouton "Fermer" ferme le dialogue
+function closeProductModal() {
+    var dialog = document.querySelector("dialog");
+    dialog.close();
+};
+
+function selectedProductSubcategory(classe) {
+
+    var allElements = document.querySelectorAll('#subElements');
+
+    allElements.forEach(function (element) {
+        if (element.className !== classe) {
+            element.style.border = 'none'
+        } else if (element.style.border == '2px solid black') {
+            element.style.border = 'none';
+        } else {
+            element.style.border = '2px solid black';
+        }
+    });
+};

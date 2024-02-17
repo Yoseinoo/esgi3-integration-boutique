@@ -1,11 +1,11 @@
 //Global
-@import "./variables";
-@import "./mixins";
+@import "utils/variables";
+@import "utils/mixins";
 
 //Layout
 //@import './layout/footer';
 
 //Pages
-@import "./pages/home";
-@import "./pages/cart";
-@import "./pages/product";
+@import "pages/home";
+@import "pages/cart";
+@import "pages/product";
