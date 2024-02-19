@@ -1,0 +1,109 @@
+footer {
+    .registration {
+        padding: 1em 100px;
+        color: $color-primary;
+        background-color: $color-dark;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        @media screen and (max-width: 500px) {
+            padding: 1em 30px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .registration-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+
+            .email-input {
+                width: 300px;
+                max-width: 100%;
+                padding: 5px;
+
+                background-color: $color-grey-text;
+                color: $color-primary;
+
+                &::placeholder {
+                    color: rgba($color: $color-primary, $alpha: 0.6);
+                }
+            }
+
+            .registration-button {
+                padding: 5px;
+                background-color: $color-dark;
+                color: $color-primary;
+                border: 1px solid $color-primary;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .social-media {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+
+            span {
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                img {
+                    max-width: 20px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    nav {
+        padding: 0 100px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 500px) {
+            padding: 0 30px;
+        }
+
+        .title {
+            text-transform: uppercase;
+        }
+
+        .links {
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+
+    .copyrights {
+        padding: 0 100px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        color: $color-grey-text;
+    }
+}
