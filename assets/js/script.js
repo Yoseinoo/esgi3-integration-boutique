@@ -135,6 +135,9 @@ $(e => {
                         title.html(product.title);
                         productDiv.append(title);
 
+                        const buttonDiv = $('<div>');
+                        buttonDiv.addClass('button-div');
+
                         const priceP = $('<p>');
                         priceP.addClass("price");
                         if (product.discount > 0) {
@@ -143,18 +146,22 @@ $(e => {
                         } else {
                             priceP.html(product.price + "€");
                         }
-                        productDiv.append(priceP);
+                        buttonDiv.append(priceP);
 
                         const buttonSee = $('<button onclick="location.href=' + "'/assets/pages/product.html'" + '" type="button">');
+                        buttonSee.addClass('normal-button');
                         buttonSee.html("Voir le produit");
-                        productDiv.append(buttonSee);
+                        buttonDiv.append(buttonSee);
 
                         const buttonAddToCart = $('<button>');
+                        buttonAddToCart.addClass('normal-button');
                         buttonAddToCart.html("Ajouter au panier");
                         buttonAddToCart.on('click', function (event) {
                             addToCart(product.id);
                         });
-                        productDiv.append(buttonAddToCart);
+                        buttonDiv.append(buttonAddToCart);
+
+                        productDiv.append(buttonDiv);
 
                         container.append(productDiv);
                     }

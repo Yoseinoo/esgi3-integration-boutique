@@ -4,6 +4,17 @@
   margin: 0;
   font-family: "Open Sans", sans-serif;
 }
+.home .normal-button {
+  background-color: #FFFFFF;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 5px 5px;
+}
+.home .normal-button:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
 .home header .top-header {
   display: flex;
   flex-direction: row;
@@ -13,10 +24,20 @@
   color: #FFFFFF;
   padding: 5px 100px;
 }
+@media screen and (max-width: 500px) {
+  .home header .top-header {
+    padding: 5px 30px;
+  }
+}
 .home header .top-header .infos {
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+@media screen and (max-width: 850px) {
+  .home header .top-header .infos .can-be-hidden {
+    display: none;
+  }
 }
 .home header .top-header .infos p {
   margin: 0;
@@ -46,6 +67,11 @@
   padding: 10px 100px;
   position: relative;
 }
+@media screen and (max-width: 500px) {
+  .home header nav {
+    padding: 10px 30px;
+  }
+}
 .home header nav .logo {
   font-size: 35px;
   font-weight: bold;
@@ -55,12 +81,24 @@
   flex-direction: row;
   gap: 30px;
 }
+@media screen and (max-width: 750px) {
+  .home header nav .links {
+    display: none;
+  }
+}
 .home header nav .links a {
   color: #000000;
   text-decoration: none;
 }
 .home header nav .links a:visited {
   color: #000000;
+}
+.home header nav .menu {
+  display: flex;
+  align-items: center;
+}
+.home header nav .menu #cart-button:hover {
+  cursor: pointer;
 }
 .home a.button {
   -webkit-appearance: button;
@@ -79,19 +117,57 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px;
 }
-.home #cart-div h4 {
+.home #cart-div .product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.home #cart-div .product img {
+  max-width: 100px;
+  height: auto;
+}
+.home #cart-div .product .title {
   margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  width: 300px;
+  text-align: center;
+}
+.home #cart-div .product .price {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-weight: bold;
+}
+.home #cart-div .product .discount {
+  font-weight: normal;
+  color: #777777;
+  text-decoration: line-through;
 }
 .home main {
   margin: 30px 100px;
+}
+@media screen and (max-width: 500px) {
+  .home main {
+    margin: 30px 30px;
+  }
 }
 .home main .presentation {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .home main .presentation .nav-img {
   position: relative;
+  max-width: 250px;
+  max-height: 195px;
 }
 .home main .presentation .nav-img img {
   max-width: 100%;
@@ -120,7 +196,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.home main .filters p {
+  margin: 0;
 }
 .home main #pokemon-container {
   margin-top: 0;
@@ -166,44 +246,67 @@
   text-transform: lowercase;
   margin: 0;
 }
-.home main .brand-container .products-container .product-card .price {
+.home main .brand-container .products-container .product-card .button-div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.home main .brand-container .products-container .product-card .button-div .price {
   font-weight: bold;
   margin: 0;
 }
-.home main .brand-container .products-container .product-card .discount {
+.home main .brand-container .products-container .product-card .button-div .discount {
   margin-left: 10px;
   font-weight: normal;
   color: #777777;
   text-decoration: line-through;
 }
+.home main .brand-container .products-container .product-card .button-div button {
+  width: 100%;
+}
 .home footer .registration {
-  padding: 0 100px;
+  padding: 1em 100px;
   color: #FFFFFF;
   background-color: #000000;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.home footer .registration .email-input {
+@media screen and (max-width: 500px) {
+  .home footer .registration {
+    padding: 1em 30px;
+  }
+}
+.home footer .registration p {
+  margin: 0;
+}
+.home footer .registration .registration-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.home footer .registration .registration-input .email-input {
   width: 300px;
+  max-width: 100%;
   padding: 5px;
   background-color: #777777;
   color: #FFFFFF;
 }
-.home footer .registration .email-input::-moz-placeholder {
+.home footer .registration .registration-input .email-input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
-.home footer .registration .email-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-.home footer .registration .registration-button {
+.home footer .registration .registration-input .registration-button {
   padding: 5px;
   background-color: #000000;
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
 }
-.home footer .registration .registration-button:hover {
+.home footer .registration .registration-input .registration-button:hover {
   cursor: pointer;
 }
 .home footer .registration .social-media {
@@ -228,6 +331,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 500px) {
+  .home footer nav {
+    padding: 0 30px;
+  }
 }
 .home footer nav .title {
   text-transform: uppercase;
@@ -242,12 +351,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   color: #777777;
-}
-
-.about {
-  margin: 0;
-  font-family: "Open Sans", sans-serif;
 }
 
 .product-main-container {
@@ -262,7 +367,6 @@
   max-height: 500px;
 }
 .product-main-container .product-images .image {
-  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   align-items: center;
@@ -277,9 +381,7 @@
   height: auto;
 }
 .product-main-container .product-images .bottom-slider .image {
-  height: -moz-fit-content;
   height: fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 5px;
   display: flex;
@@ -377,4 +479,6 @@
 .product-main-container .product-description .cart-button:hover {
   background-color: rgb(36, 188, 28);
   cursor: pointer;
-}/*# sourceMappingURL=index.css.map */
+}
+
+/*# sourceMappingURL=index.css.map */

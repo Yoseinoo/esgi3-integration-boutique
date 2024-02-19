@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/assets/css/index.css">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -18,9 +18,9 @@
         <header>
             <div class="top-header">
                 <div class="infos">
-                    <p>+336 06 06 60 60</p>
+                    <p class="can-be-hidden">+336 06 06 60 60</p>
                     <p>France, Aix-en-Provence</p>
-                    <p>Toute la semaine 24/7</p>
+                    <p class="can-be-hidden">Toute la semaine 24/7</p>
                 </div>
                 <div class="social-media">
                     <span><img src="assets/img/facebook-svgrepo-com.svg"></span>
@@ -38,10 +38,7 @@
                     <a href="#yugioh-container">Yu-Gi-Oh!</a>
                 </div>
                 <div class="menu">
-                    <span>R</span>
-                    <span>W</span>
-                    <span>U</span>
-                    <span><button id="cart-button">Cart</button></span>
+                    <img id="cart-button" src="assets/img/shopping-bag-svgrepo-com.svg">
                 </div>
             </nav>
         </header>
@@ -69,11 +66,11 @@
             </div>
 
             <div class="filters">
-                <p>Filtres : </p>
+                <p>Filtres&nbsp;:</p>
                 <select id="category-select"></select>
                 <select id="subcategory-select"></select>
                 <select id="extension-select"></select>
-                <button id="filter-button">FILTRER</button>
+                <button id="filter-button" class="normal-button">FILTRER</button>
             </div>
 
             <div id="pokemon-container" class="brand-container">
@@ -95,7 +92,7 @@
         <footer>
             <div class="registration">
                 <p>ON RESTE EN CONTACT ?</p>
-                <div>
+                <div class="registration-input">
                     <input class="email-input" type="text" placeholder="Entrez votre email" />
                     <button class="registration-button">NOUS REJOINDRE</button>
                 </div>
