@@ -144,7 +144,7 @@ $(e => {
                             let discountPrice = product.price - product.discount;
                             priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
                         } else {
-                            priceP.html(product.price + "€");
+                            priceP.html(priceFormatter.format(product.price));
                         }
                         buttonDiv.append(priceP);
 
@@ -303,7 +303,7 @@ $(e => {
                             let discountPrice = product.price - product.discount;
                             priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
                         } else {
-                            priceP.html(product.price + "€");
+                            priceP.html(priceFormatter.format(product.price));
                         }
                         div.append(priceP);
 
