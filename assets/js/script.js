@@ -258,6 +258,15 @@ $(e => {
     }
 
     /**
+     * Empty the cart
+     */
+    function emptyCart(id) {
+        setIdsToLocalStorage([]);
+        openCart();
+        alert('Panier vidé');
+    }
+
+    /**
      * Open the cart popup
      * Get ids of products in cart from local storage and create the cart on the spot
      * Not the most efficient but it works
@@ -273,6 +282,8 @@ $(e => {
             $('#cart-div').show();
             return;
         }
+
+        let total = 0;
 
         //Get the products from json
         fetch('../../products.json')
@@ -302,14 +313,16 @@ $(e => {
                         if (product.discount > 0) {
                             let discountPrice = product.price - product.discount;
                             priceP.html(priceFormatter.format(discountPrice) + "<span class='discount'>" + priceFormatter.format(product.price) + "</span>");
+                            total += discountPrice;
                         } else {
                             priceP.html(priceFormatter.format(product.price));
+                            total += product.price;
                         }
                         div.append(priceP);
 
                         const buttonRemove = $('<button>');
                         buttonRemove.html("Supprimer");
-                        buttonRemove.addClass("delete-product");
+                        buttonRemove.addClass("delete-product normal-button");
                         buttonRemove.on('click', function (event) {
                             removeFromCart(product.id);
                         });
@@ -319,6 +332,23 @@ $(e => {
                         $('#cart-div').append(div);
                     }
                 });
+
+                const totalDiv = $("<div>");
+                totalDiv.addClass("total-div");
+                totalDiv.append("<p>Total : " + priceFormatter.format(total) + "</p>");
+                totalDiv.append("<button class='normal-button'>Commander</button>");
+
+                $('#cart-div').append(totalDiv);
+
+                const deleteDiv = $("<div>");
+                deleteDiv.addClass("delete-div");
+                const emptyButton = $("<button>");
+                emptyButton.addClass("normal-button");
+                emptyButton.html("Vider le panier");
+                emptyButton.on('click', emptyCart);
+                deleteDiv.append(emptyButton);
+
+                $('#cart-div').append(deleteDiv);
             })
             .catch((err) => {
                 console.error(err);

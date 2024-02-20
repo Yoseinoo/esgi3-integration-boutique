@@ -382,21 +382,5 @@
         "subcategory": "epee et bouclier",
         "brand": "Yugioh",
         "extension": "Blue sky stream S7r"
-    },
-    {
-        "id": 25,
-        "title": "BOOSTER POKÉMON ÉPÉE ET BOUCLIER BLUE SKY STREAM",
-        "description": "5 cartes par paquet",
-        "price": 11,
-        "discount": 10,
-        "images": [
-            "/assets/img/Yu-Gi-Oh!.png",
-            "/assets/img/Pokemon.png",
-            "url3"
-        ],
-        "category": "booster",
-        "subcategory": "epee et bouclier",
-        "brand": "Yugioh",
-        "extension": "Blue sky stream S7r"
     }
 ]

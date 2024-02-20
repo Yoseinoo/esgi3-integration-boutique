@@ -241,6 +241,19 @@ header nav .menu #cart-button:hover {
   color: #777777;
   text-decoration: line-through;
 }
+.home #cart-div .total-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  font-weight: bold;
+}
+.home #cart-div .delete-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .home main {
   margin: 30px 100px;
 }
